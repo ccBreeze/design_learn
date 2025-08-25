@@ -1,4 +1,4 @@
-import { greet } from './index';
+import { greet, facadeDemo } from './index';
 
-const output = greet('World');
-console.log(output);
+console.log(greet('World'));
+console.log(facadeDemo());
