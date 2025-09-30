@@ -7,5 +7,8 @@ export * from './patterns/creational/singleton/Singleton'
 export * from './patterns/creational/factoryMethod/FactoryMethod'
 export * from './patterns/creational/factoryMethod/Transport'
 export * from './patterns/creational/builder/Builder'
+export * from './patterns/behavioral/strategy/PaymentStrategy'
+export * from './patterns/structural/bridge/PaymentBridge'
+export * from './patterns/structural/bridge/PSPConfigBuilder'
 
 export default { greet }
