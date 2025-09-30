@@ -29,10 +29,22 @@ export default [
       '@typescript-eslint/semi': ['error', 'never'],
       
       // TypeScript 推荐规则
-      '@typescript-eslint/no-unused-vars': 'error',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          'argsIgnorePattern': '^_',
+          'varsIgnorePattern': '^_',
+          'ignoreRestSiblings': true,
+          'args': 'after-used',
+          'destructuredArrayIgnorePattern': '^_'
+        }
+      ],
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
+      
+      // 允许构造函数参数未使用（用于依赖注入等模式）
+      'no-unused-vars': 'off', // 关闭基础规则，使用 TypeScript 版本
       
       // Prettier 集成
       'prettier/prettier': 'error'
