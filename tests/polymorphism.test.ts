@@ -14,7 +14,9 @@ describe('Polymorphism (统一接口下的不同实现)', () => {
 
   it('添加新类型无需修改渲染逻辑', () => {
     class Triangle implements Shape {
-      draw(): string { return 'Triangle.draw()' }
+      draw(): string {
+        return 'Triangle.draw()'
+      }
     }
     const shapes: Shape[] = [new Circle(), new Triangle()]
     expect(renderAll(shapes)).toBe('Circle.draw() | Triangle.draw()')
