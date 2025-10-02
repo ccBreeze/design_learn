@@ -13,5 +13,6 @@ export * from './patterns/structural/bridge/PSPConfigBuilder'
 export * from './patterns/creational/prototype/Prototype'
 export * from './patterns/structural/flyweight/ParticleGameFlyweight'
 export * from './patterns/behavioral/visitor/Visitor'
+export * from './patterns/behavioral/command/Command'
 
 export default { greet }
