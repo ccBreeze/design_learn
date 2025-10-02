@@ -12,5 +12,6 @@ export * from './patterns/structural/bridge/PaymentBridge'
 export * from './patterns/structural/bridge/PSPConfigBuilder'
 export * from './patterns/creational/prototype/Prototype'
 export * from './patterns/structural/flyweight/ParticleGameFlyweight'
+export * from './patterns/behavioral/visitor/Visitor'
 
 export default { greet }
