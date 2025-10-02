@@ -10,5 +10,6 @@ export * from './patterns/creational/builder/Builder'
 export * from './patterns/behavioral/strategy/PaymentStrategy'
 export * from './patterns/structural/bridge/PaymentBridge'
 export * from './patterns/structural/bridge/PSPConfigBuilder'
+export * from './patterns/creational/prototype/Prototype'
 
 export default { greet }
