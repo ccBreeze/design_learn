@@ -27,6 +27,60 @@ globs: **/*.ts, **/*.tsx, **/*.d.ts
 - 将共享类型放在 `types` 目录中
 - 组件 props 与其组件共同放置
 
+## 导出规范
+- 接口和类定义时直接使用 `export` 关键字
+- 避免在文件底部集中导出接口和类
+- 示例：
+  ```typescript
+  // ✅ 推荐
+  export interface Iterator<T> {
+    hasNext(): boolean
+  }
+  
+  export class ConcreteIterator<T> {
+    // ...
+  }
+  
+  // ❌ 避免
+  interface Iterator<T> { }
+  class ConcreteIterator<T> { }
+  export { Iterator, ConcreteIterator }
+  ```
+
+## 导出规范
+- 接口和类定义时直接使用 `export` 关键字
+- 避免在文件底部集中导出接口和类
+- 不要导出不需要的内容，避免命名冲突
+- 使用命名空间或别名解决导出冲突
+- 示例：
+  ```typescript
+  // ✅ 推荐 - 直接导出
+  export interface Iterator<T> {
+    hasNext(): boolean
+  }
+  
+  export class ConcreteIterator<T> {
+    // ...
+  }
+  
+  // ✅ 推荐 - 使用命名空间避免冲突
+  export * as Minimal from './MinimalIterator'
+  export * as Standard from './StandardIterator'
+  
+  // ✅ 推荐 - 使用别名
+  export { Iterator as MinimalIterator } from './MinimalIterator'
+  export { Iterator as StandardIterator } from './StandardIterator'
+  
+  // ❌ 避免 - 底部集中导出
+  interface Iterator<T> { }
+  class ConcreteIterator<T> { }
+  export { Iterator, ConcreteIterator }
+  
+  // ❌ 避免 - 直接导出可能冲突
+  export * from './MinimalIterator'
+  export * from './StandardIterator'  // 可能导致 Iterator 接口冲突
+  ```
+
 ## 函数
 - 为公共函数使用显式返回类型
 - 回调和方法使用箭头函数
@@ -55,3 +109,14 @@ globs: **/*.ts, **/*.tsx, **/*.d.ts
 - 对象创建使用工厂模式
 - 利用依赖注入
 - 使用模块模式实现封装
+
+## 代码质量检查
+- 每次修改代码后必须运行 ESLint 检查
+- 确保所有 ESLint 错误和警告都已修复后再提交
+- 使用以下命令进行检查：
+  ```bash
+  npm run lint              # 检查代码
+  npm run lint:fix          # 自动修复可修复的问题
+  ```
+- 不要提交包含 ESLint 错误的代码
+- 对于无法修复的警告，需要添加合理的注释说明原因
